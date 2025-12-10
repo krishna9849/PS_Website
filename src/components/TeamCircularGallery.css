@@ -1,0 +1,82 @@
+/* TeamCircularGallery.css */
+.tcg-root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 24px 12px;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, rgba(255,250,249,0.03), rgba(255,245,240,0.02));
+}
+
+.tcg-stage {
+  width: 100%;
+  max-width: 1200px;
+  height: 520px;
+  position: relative;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tcg-ring {
+  position: relative;
+  width: 0;
+  height: 0;
+  transform: translateZ(0);
+  pointer-events: auto;
+  user-select: none;
+}
+
+.tcg-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(0, 0, 0);
+  transition: transform 120ms cubic-bezier(.2,.9,.2,1), opacity 120ms linear;
+  cursor: pointer;
+  will-change: transform, opacity;
+  display: grid;
+  place-items: center;
+  pointer-events: auto;
+  padding: 6px;
+}
+
+.tcg-card .pc-card-wrapper {
+  width: 260px;
+  max-width: 80vw;
+  transform-origin: center center;
+}
+
+.tcg-card .pc-card {
+  height: auto;
+  max-height: none;
+}
+
+.tcg-card .pc-avatar-content .avatar {
+  object-fit: cover;
+  height: 260px;
+}
+
+@media (max-width: 1024px) {
+  .tcg-stage { height: 440px; }
+  .tcg-card .pc-card-wrapper { width: 220px; }
+  .tcg-card .pc-avatar-content .avatar { height: 200px; }
+}
+@media (max-width: 640px) {
+  .tcg-stage { height: 340px; }
+  .tcg-card .pc-card-wrapper { width: 180px; }
+  .tcg-card .pc-avatar-content .avatar { height: 150px; }
+}
+
+.tcg-card:hover {
+  transform: translate3d(0, -6px, 0) scale(1.02) !important;
+  z-index: 9999;
+  opacity: 1 !important;
+}
+
+.tcg-card:focus {
+  outline: 3px solid rgba(255,122,24,0.16);
+  outline-offset: 6px;
+}

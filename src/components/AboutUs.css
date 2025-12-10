@@ -1,0 +1,75 @@
+/* Container */
+.about-container {
+  width: 100%;
+  text-align: center;
+  padding: 40px 0;
+}
+
+.about-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #ff7a00; /* PetSaviour Orange */
+  margin-bottom: 25px;
+}
+
+/* Horizontal scroll section */
+.team-scroll {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: auto;
+  padding: 20px;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+}
+
+.team-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.team-scroll::-webkit-scrollbar-thumb {
+  background: #ff7a00; /* Orange */
+  border-radius: 4px;
+}
+
+/* Card Wrapper */
+.team-card-wrapper {
+  transform: scale(0.75);
+  transform-origin: top center;
+  min-width: 320px;
+  margin-bottom: 20px;
+}
+
+/* Responsive — tablets */
+@media (max-width: 1024px) {
+  .team-card-wrapper {
+    transform: scale(0.68);
+    min-width: 280px;
+  }
+}
+
+/* Responsive — mobile */
+@media (max-width: 768px) {
+  .team-card-wrapper {
+    transform: scale(0.58);
+    min-width: 240px;
+  }
+
+  .about-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* Extra small phone */
+@media (max-width: 480px) {
+  .team-card-wrapper {
+    transform: scale(0.50);
+    min-width: 220px;
+  }
+
+  .about-title {
+    font-size: 1.6rem;
+  }
+}

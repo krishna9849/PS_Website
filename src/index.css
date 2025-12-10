@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-image: url('./assets/websitebg.jpg');
+}
+
+@keyframes dogRun {
+  0% {
+    left: -100px; /* Start off-screen to the left */
+  }
+  100% {
+    left: 100%; /* Move to off-screen on the right */
+  }
+}
+
+.animate-dog-run {
+  position: absolute;
+  top: 0;
+  animation: dogRun 60s linear infinite; /* Adjust duration and infinite loop */
+}
+
+
+@keyframes playful-jump {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes head-tilt {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes tail-wag {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(15deg);
+  }
+  75% {
+    transform: rotate(-15deg);
+  }
+}
+
+/* Custom Tailwind Classes */
+.animate-playful-jump {
+  animation: tail-wag 3s ease-in-out infinite;
+}
+
+.animate-head-tilt {
+  animation: head-tilt 2s ease-in-out infinite;
+}
+
+.animate-tail-wag {
+  animation: tail-wag 3s ease-in-out infinite;
+}
