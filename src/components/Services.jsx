@@ -435,206 +435,335 @@ Notes:
 
 
 
-// src/components/Services.jsx
+// // src/components/Services.jsx
+// import React from "react";
+// import ElectricBorder from "./ElectricBorder"; // adjust path if ElectricBorder is elsewhere
+
+// // Assets (ensure these files exist in src/assets)
+// import dog from "../assets/dog.png";
+// import paw from "../assets/paw.png";
+// import doctor from "../assets/doctor.png";
+// import vaccum from "../assets/vaccum.png";
+// import spoon from "../assets/spoon.png";
+
+// /* ---------------------------
+//    Small inline fallback SVG
+//    --------------------------- */
+// const FallbackIcon = () => (
+//   <svg
+//     width="36"
+//     height="36"
+//     viewBox="0 0 24 24"
+//     fill="none"
+//     xmlns="http://www.w3.org/2000/svg"
+//     className="text-rose-500"
+//   >
+//     <path
+//       d="M12 2C10.343 2 9 3.343 9 5s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3zM5 21a7 7 0 0114 0H5z"
+//       fill="#FF8A66"
+//     />
+//   </svg>
+// );
+
+// /* ---------------------------
+//    ServiceCard
+//    --------------------------- */
+// const ServiceCard = ({ image, title, description, ebProps = {} }) => {
+//   // handle how bundler sometimes exposes images
+//   const src = typeof image === "string" ? image : image?.default || image;
+
+//   return (
+//     <ElectricBorder
+//       color={ebProps.color ?? "#7df9ff"}
+//       speed={ebProps.speed ?? 1.2}
+//       chaos={ebProps.chaos ?? 0.6}
+//       thickness={ebProps.thickness ?? 2}
+//       style={{ borderRadius: 16 }}
+//       className="w-full"
+//     >
+//       <div className="relative bg-white rounded-[12px] overflow-visible transition-transform transform hover:-translate-y-2">
+//         <div className="p-8 min-h-[180px] flex flex-col items-center text-center">
+//           <div className="w-16 h-16 rounded-full bg-[#FBD7CC] flex items-center justify-center mb-6 shadow-sm">
+//             {src ? (
+//               <img
+//                 src={src}
+//                 alt={title}
+//                 className="w-9 h-9 object-contain"
+//                 loading="lazy"
+//                 onError={(e) => {
+//                   // swap to fallback svg if image fails to load
+//                   e.currentTarget.style.display = "none";
+//                   const parent = e.currentTarget.parentNode;
+//                   if (parent && !parent.querySelector('svg')) {
+//                     parent.insertAdjacentHTML(
+//                       "beforeend",
+//                       '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C10.343 2 9 3.343 9 5s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3zM5 21a7 7 0 0114 0H5z" fill="#FF8A66"/></svg>'
+//                     );
+//                   }
+//                 }}
+//               />
+//             ) : (
+//               <FallbackIcon />
+//             )}
+//           </div>
+
+//           <h3
+//             className="text-lg font-extrabold text-[#0f1724] mb-2"
+//             style={{
+//               fontFamily:
+//                 '"Baloo 2", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial',
+//             }}
+//           >
+//             {title}
+//           </h3>
+
+//           <p className="text-sm text-slate-500 leading-relaxed max-w-[300px]">
+//             {description}
+//           </p>
+//         </div>
+//       </div>
+//     </ElectricBorder>
+//   );
+// };
+
+// /* ---------------------------
+//    Services (section)
+//    --------------------------- */
+// const Services = ({ servicesProp = null }) => {
+//   const defaultServices = [
+//     {
+//       id: 1,
+//       image: vaccum,
+//       title: "At-Home Grooming Services",
+//       ebColor: "#ff8a66",
+//       ebSpeed: 1.1,
+//       ebChaos: 0.6,
+//       ebThickness: 2,
+//       description:
+//         "PetSaviour offers comprehensive grooming services that cater to each pet’s unique needs, right from the comfort of home. Services include nail trimming, bathing, coat brushing, styling, and more, tailored to help pets look and feel their best without the anxiety of travel.",
+//     },
+//     {
+//       id: 2,
+//       image: spoon,
+//       title: "At-Home Lab Tests",
+//       ebColor: "#7df9ff",
+//       ebSpeed: 1,
+//       ebChaos: 0.5,
+//       ebThickness: 2,
+//       description:
+//         "With our at-home lab testing services, there’s no need to visit a clinic; our technicians bring all the equipment to you. Whether it’s a routine check or a specific health test, our team ensures that your pet stays calm and relaxed while receiving professional, accurate diagnostic services.",
+//     },
+//     {
+//       id: 3,
+//       image: doctor,
+//       title: "At-Home Doctor Consultations",
+//       ebColor: "#a08bff",
+//       ebSpeed: 1,
+//       ebChaos: 0.5,
+//       ebThickness: 2,
+//       description:
+//         "From preventive health advice to treatment for minor ailments, our vet consultations provide professional care and peace of mind in your pet’s most comfortable environment – home. This service is ideal for routine exams, behavior consultations, vaccinations, and more.",
+//     },
+//     {
+//       id: 4,
+//       image: paw,
+//       title: "E-Commerce for Pet",
+//       ebColor: "#7af59c",
+//       ebSpeed: 0.9,
+//       ebChaos: 0.45,
+//       ebThickness: 2,
+//       description:
+//         "Our online store is stocked with premium, hand-picked pet products. From nutritious food options to toys and grooming supplies, PetSaviour has everything you need to keep your pet happy, healthy, and engaged. Our products are chosen for quality, safety, and comfort.",
+//     },
+//     {
+//       id: 5,
+//       image: dog,
+//       title: "At-Home Dog Training",
+//       ebColor: "#ffd36b",
+//       ebSpeed: 1.15,
+//       ebChaos: 0.55,
+//       ebThickness: 2,
+//       description:
+//         "Our trainers bring structured yet compassionate training sessions directly to your home, tailoring programs to address your dog’s specific behavior and obedience needs. Whether you’re looking to teach basic commands, we create a personalized training plan for lasting results.",
+//     },
+//     {
+//       id: 6,
+//       image: doctor,
+//       title: "At-Home Doctor Consultations",
+//       ebColor: "#a08bff",
+//       ebSpeed: 1,
+//       ebChaos: 0.5,
+//       ebThickness: 2,
+//       description:
+//         "From preventive health advice to treatment for minor ailments, our vet consultations provide professional care and peace of mind in your pet’s most comfortable environment – home. This service is ideal for routine exams, behavior consultations, vaccinations, and more.",
+//     },
+//   ];
+
+//   const services = servicesProp ?? defaultServices;
+
+//   return (
+//     <section className="bg-[color:var(--bg-rose,#fff6f4)] py-20 px-6">
+//       <div className="max-w-6xl mx-auto">
+//         <header className="text-center mb-12">
+//           <h2
+//             className="text-4xl md:text-5xl font-extrabold text-[#172026]"
+//             style={{
+//               fontFamily:
+//                 '"Baloo 2", system-ui, -apple-system, "Segoe UI", Roboto',
+//             }}
+//           >
+//             Positively Perfect Services
+//           </h2>
+//           <p className="mt-3 text-slate-500 max-w-2xl mx-auto">
+//             From grooming to boarding, we offer everything your pet needs to stay
+//             happy, healthy, and safe.
+//           </p>
+//         </header>
+
+//         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+//           {services.map((s) => (
+//             <ServiceCard
+//               key={s.id}
+//               image={s.image}
+//               title={s.title}
+//               description={s.description}
+//               ebProps={{
+//                 color: s.ebColor,
+//                 speed: s.ebSpeed,
+//                 chaos: s.ebChaos,
+//                 thickness: s.ebThickness,
+//               }}
+//             />
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default Services;
+
+
+
 import React from "react";
-import ElectricBorder from "./ElectricBorder"; // adjust path if ElectricBorder is elsewhere
+import {
+  FaBath,
+  FaFlask,
+  FaUserMd,
+  FaShoppingBag,
+  FaDog,
+} from "react-icons/fa";
+import cat from "../assets/catbasket.png";
 
-// Assets (ensure these files exist in src/assets)
-import dog from "../assets/dog.png";
-import paw from "../assets/paw.png";
-import doctor from "../assets/doctor.png";
-import vaccum from "../assets/vaccum.png";
-import spoon from "../assets/spoon.png";
+const services = [
+  {
+    icon: <FaBath />,
+    title: "At-Home Grooming Services",
+    description:
+      "PetSaviour offers comprehensive grooming services that cater to each pet's unique needs, right from the comfort of home. Services include nail trimming, bathing, coat brushing, styling, and more—without the anxiety of travel.",
+  },
+  {
+    icon: <FaFlask />,
+    title: "At-Home Lab Tests",
+    description:
+      "With our at-home lab testing services, there’s no need to visit a clinic. Our technicians bring all the equipment to you, ensuring accurate diagnostics while your pet stays calm and relaxed.",
+  },
+  {
+    icon: <FaUserMd />,
+    title: "At-Home Doctor Consultations",
+    description:
+      "From preventive health advice to treatment for minor ailments, our vet consultations provide professional care and peace of mind in your pet’s most comfortable environment—home.",
+  },
+  {
+    icon: <FaShoppingBag />,
+    title: "E-Commerce for Pet",
+    description:
+      "Our online store is stocked with premium, hand-picked pet products. From nutritious food options to toys and grooming supplies—chosen for quality, safety, and comfort.",
+  },
+  {
+    icon: <FaDog />,
+    title: "At-Home Dog Training",
+    description:
+      "Structured yet compassionate training sessions delivered to your home, addressing behavior and obedience needs with personalized plans for lasting results.",
+  },
+];
 
-/* ---------------------------
-   Small inline fallback SVG
-   --------------------------- */
-const FallbackIcon = () => (
-  <svg
-    width="36"
-    height="36"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className="text-rose-500"
+const ServiceCard = ({ service }) => (
+  <div
+    className="
+      w-full max-w-[360px]
+      rounded-2xl
+      border border-orange-300/40
+      bg-gradient-to-br
+      from-[#FFE6DA]/70
+      via-white/60
+      to-[#0f172a]/5
+      backdrop-blur-md
+      p-10
+      transition-all
+      duration-500
+      hover:-translate-y-2
+      hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)]
+      animate-[softFloat_6s_ease-in-out_infinite]
+    "
   >
-    <path
-      d="M12 2C10.343 2 9 3.343 9 5s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3zM5 21a7 7 0 0114 0H5z"
-      fill="#FF8A66"
-    />
-  </svg>
+    <div className="w-14 h-14 rounded-full bg-orange-500 text-white flex items-center justify-center text-2xl mb-6">
+      {service.icon}
+    </div>
+
+    <h3 className="text-lg font-semibold text-[#1f2a44] mb-4">
+      {service.title}
+    </h3>
+
+    <p className="text-sm text-gray-600 leading-relaxed">
+      {service.description}
+    </p>
+  </div>
 );
 
-/* ---------------------------
-   ServiceCard
-   --------------------------- */
-const ServiceCard = ({ image, title, description, ebProps = {} }) => {
-  // handle how bundler sometimes exposes images
-  const src = typeof image === "string" ? image : image?.default || image;
-
+const Services = () => {
   return (
-    <ElectricBorder
-      color={ebProps.color ?? "#7df9ff"}
-      speed={ebProps.speed ?? 1.2}
-      chaos={ebProps.chaos ?? 0.6}
-      thickness={ebProps.thickness ?? 2}
-      style={{ borderRadius: 16 }}
-      className="w-full"
-    >
-      <div className="relative bg-white rounded-[12px] overflow-visible transition-transform transform hover:-translate-y-2">
-        <div className="p-8 min-h-[180px] flex flex-col items-center text-center">
-          <div className="w-16 h-16 rounded-full bg-[#FBD7CC] flex items-center justify-center mb-6 shadow-sm">
-            {src ? (
-              <img
-                src={src}
-                alt={title}
-                className="w-9 h-9 object-contain"
-                loading="lazy"
-                onError={(e) => {
-                  // swap to fallback svg if image fails to load
-                  e.currentTarget.style.display = "none";
-                  const parent = e.currentTarget.parentNode;
-                  if (parent && !parent.querySelector('svg')) {
-                    parent.insertAdjacentHTML(
-                      "beforeend",
-                      '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C10.343 2 9 3.343 9 5s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3zM5 21a7 7 0 0114 0H5z" fill="#FF8A66"/></svg>'
-                    );
-                  }
-                }}
-              />
-            ) : (
-              <FallbackIcon />
-            )}
+    <section className="relative pt-12 pb-24 px-6 bg-gradient-to-br from-[#FFE6DA] via-white to-[#0b0b0b]/5 overflow-hidden">
+
+      {/* Background Glows */}
+      <div className="absolute -bottom-40 -left-40 w-[420px] h-[420px] bg-orange-400/30 rounded-full blur-[120px] animate-[glowFloat_16s_ease-in-out_infinite]" />
+      <div className="absolute top-24 -right-40 w-[380px] h-[380px] bg-black/10 rounded-full blur-[140px] animate-[glowFloat_20s_ease-in-out_infinite]" />
+
+      {/* Cat Image */}
+      <img
+        src={cat}
+        alt="Happy Cat"
+        className="
+          absolute bottom-0 left-0
+          w-40 md:w-48 lg:w-56
+          pointer-events-none select-none
+          drop-shadow-[0_20px_30px_rgba(0,0,0,0.15)]
+          animate-[glowFloat_18s_ease-in-out_infinite]
+        "
+      />
+
+      <div className="relative max-w-7xl mx-auto">
+
+        {/* Heading */}
+        <h2 className="text-4xl md:text-5xl font-semibold text-center text-[#1f2a44] mb-20">
+          Our services
+        </h2>
+
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+
+          {/* Top 3 cards */}
+          {services.slice(0, 3).map((service, index) => (
+            <ServiceCard key={index} service={service} />
+          ))}
+
+          {/* Bottom 2 centered */}
+          <div className="lg:col-span-3 flex justify-center gap-12">
+            {services.slice(3, 5).map((service, index) => (
+              <ServiceCard key={index} service={service} />
+            ))}
           </div>
 
-          <h3
-            className="text-lg font-extrabold text-[#0f1724] mb-2"
-            style={{
-              fontFamily:
-                '"Baloo 2", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial',
-            }}
-          >
-            {title}
-          </h3>
-
-          <p className="text-sm text-slate-500 leading-relaxed max-w-[300px]">
-            {description}
-          </p>
-        </div>
-      </div>
-    </ElectricBorder>
-  );
-};
-
-/* ---------------------------
-   Services (section)
-   --------------------------- */
-const Services = ({ servicesProp = null }) => {
-  const defaultServices = [
-    {
-      id: 1,
-      image: vaccum,
-      title: "At-Home Grooming Services",
-      ebColor: "#ff8a66",
-      ebSpeed: 1.1,
-      ebChaos: 0.6,
-      ebThickness: 2,
-      description:
-        "PetSaviour offers comprehensive grooming services that cater to each pet’s unique needs, right from the comfort of home. Services include nail trimming, bathing, coat brushing, styling, and more, tailored to help pets look and feel their best without the anxiety of travel.",
-    },
-    {
-      id: 2,
-      image: spoon,
-      title: "At-Home Lab Tests",
-      ebColor: "#7df9ff",
-      ebSpeed: 1,
-      ebChaos: 0.5,
-      ebThickness: 2,
-      description:
-        "With our at-home lab testing services, there’s no need to visit a clinic; our technicians bring all the equipment to you. Whether it’s a routine check or a specific health test, our team ensures that your pet stays calm and relaxed while receiving professional, accurate diagnostic services.",
-    },
-    {
-      id: 3,
-      image: doctor,
-      title: "At-Home Doctor Consultations",
-      ebColor: "#a08bff",
-      ebSpeed: 1,
-      ebChaos: 0.5,
-      ebThickness: 2,
-      description:
-        "From preventive health advice to treatment for minor ailments, our vet consultations provide professional care and peace of mind in your pet’s most comfortable environment – home. This service is ideal for routine exams, behavior consultations, vaccinations, and more.",
-    },
-    {
-      id: 4,
-      image: paw,
-      title: "E-Commerce for Pet",
-      ebColor: "#7af59c",
-      ebSpeed: 0.9,
-      ebChaos: 0.45,
-      ebThickness: 2,
-      description:
-        "Our online store is stocked with premium, hand-picked pet products. From nutritious food options to toys and grooming supplies, PetSaviour has everything you need to keep your pet happy, healthy, and engaged. Our products are chosen for quality, safety, and comfort.",
-    },
-    {
-      id: 5,
-      image: dog,
-      title: "At-Home Dog Training",
-      ebColor: "#ffd36b",
-      ebSpeed: 1.15,
-      ebChaos: 0.55,
-      ebThickness: 2,
-      description:
-        "Our trainers bring structured yet compassionate training sessions directly to your home, tailoring programs to address your dog’s specific behavior and obedience needs. Whether you’re looking to teach basic commands, we create a personalized training plan for lasting results.",
-    },
-    {
-      id: 6,
-      image: doctor,
-      title: "At-Home Doctor Consultations",
-      ebColor: "#a08bff",
-      ebSpeed: 1,
-      ebChaos: 0.5,
-      ebThickness: 2,
-      description:
-        "From preventive health advice to treatment for minor ailments, our vet consultations provide professional care and peace of mind in your pet’s most comfortable environment – home. This service is ideal for routine exams, behavior consultations, vaccinations, and more.",
-    },
-  ];
-
-  const services = servicesProp ?? defaultServices;
-
-  return (
-    <section className="bg-[color:var(--bg-rose,#fff6f4)] py-20 px-6">
-      <div className="max-w-6xl mx-auto">
-        <header className="text-center mb-12">
-          <h2
-            className="text-4xl md:text-5xl font-extrabold text-[#172026]"
-            style={{
-              fontFamily:
-                '"Baloo 2", system-ui, -apple-system, "Segoe UI", Roboto',
-            }}
-          >
-            Positively Perfect Services
-          </h2>
-          <p className="mt-3 text-slate-500 max-w-2xl mx-auto">
-            From grooming to boarding, we offer everything your pet needs to stay
-            happy, healthy, and safe.
-          </p>
-        </header>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((s) => (
-            <ServiceCard
-              key={s.id}
-              image={s.image}
-              title={s.title}
-              description={s.description}
-              ebProps={{
-                color: s.ebColor,
-                speed: s.ebSpeed,
-                chaos: s.ebChaos,
-                thickness: s.ebThickness,
-              }}
-            />
-          ))}
         </div>
       </div>
     </section>
