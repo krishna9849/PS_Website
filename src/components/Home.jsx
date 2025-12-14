@@ -134,40 +134,58 @@ const Home = () => {
   return (
     <>
       {/* Running Dog GIF */}
-      <div className="relative w-full flex justify-center mb-4 font-pop">
+      {/* <div className="relative w-full flex justify-center mb-4 font-pop">
         <img
           src={runningdog}
           alt="Running Dog"
           className="w-16 h-16 lg:w-20 lg:h-20 animate-dog-run"
           style={{ animation: 'dogRun 60s linear infinite' }}
         />
-      </div>
+      </div> */}
 
-      <div className="text-center mx-auto max-w-6xl px-4 lg:px-6 py-10 lg:py-16 font-pop">
-        
+      {/* <div className="text-center mx-auto max-w-6xl px-4 lg:px-6 py-10 lg:py-16 font-pop"> */}
+    <div className="text-center mx-auto max-w-6xl px-4 lg:px-6 pt-2 pb-10 lg:pb-16 font-pop">
+    
         {/* Heading with Paw Icon */}
-        <h1
+        {/* <h1
           className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-4 flex justify-center items-center"
           style={{ lineHeight: '1.4' }}
         >
           <FaPaw className="text-orange-500 mr-2" />
           Your Partner in At-Home Pet Care and Beyond!
-        </h1>
+        </h1> */}
+        <h1
+  className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-4 flex justify-center items-center text-center"
+  style={{ lineHeight: '1.4' }}
+>
+  {/* <FaPaw className="text-orange-500 mr-2" /> */}
+  <span>
+    Your Partner in At-Home Pet Care
+    <br />
+    <span className="text-orange-500">and Beyond!</span>
+  </span>
+</h1>
+
 
         {/* Subheading */}
-        <p
+        {/* <p
           className="text-gray-600 text-sm sm:text-base lg:text-lg mb-6 font-normal"
           style={{ lineHeight: '1.6' }}
         >
           At Pet Saviour, we understand that your furry friends deserve the best
           care. From grooming to wellness, we're here to make your life easier
           while keeping your pets happy and healthy.
-        </p>
+        </p> */}
 
         {/* Typewriter Effect */}
         <div className="flex justify-center items-center text-center mb-8 font-medium">
           <Typewriter
             multiText={[
+              '🐾 At Pet Saviour, we understand your furry friends deserve the best care.',
+              '🐕 From grooming to complete wellness support.',
+              '🐾 We’re here to make your life easier as a pet parent.',
+              '🐶 While keeping your pets happy, safe, and healthy.',
+              '🐾 We treat your pets like family!',
               '🐾 Grooming services tailored for your pets!',
               '🐕 Expert pet wellness care at your doorstep.',
               '🐾 Keeping tails wagging with love and care.',
@@ -181,7 +199,7 @@ const Home = () => {
             textStyle={{
               fontSize: '20px',
               fontWeight: '500',
-              color: '#FB923C',
+              color: '#4B5563',
               textAlign: 'center',
               fontFamily: 'Poppins',
             }}
@@ -206,7 +224,7 @@ const Home = () => {
         </div>
 
         {/* Dog Images Section */}
-        <div className="flex justify-center items-center gap-20 mx-auto max-w-6xl">
+        {/* <div className="flex justify-center items-center gap-20 mx-auto max-w-6xl">
           <div className="text-center animate-playful-jump">
             <img src={leftdog} alt="Left Dog" />
           </div>
@@ -218,7 +236,22 @@ const Home = () => {
           <div className="text-center animate-tail-wag">
             <img src={rightdog} alt="Right Dog" />
           </div>
-        </div>
+        </div> */}
+{/* <div className="flex justify-center items-center gap-20 mx-auto max-w-6xl -mt-8"> */}
+  <div className="flex justify-center items-center gap-24 lg:gap-28 mx-auto max-w-6xl -mt-8">
+
+  <div className="text-center animate-playful-jump">
+    <img src={leftdog} alt="Left Dog" className="w-40 lg:w-44 mx-auto" />
+  </div>
+
+  <div className="text-center animate-head-tilt">
+    <img src={middledog} alt="Middle Dog" className="w-44 lg:w-48 mx-auto" />
+  </div>
+
+  <div className="text-center animate-tail-wag">
+    <img src={rightdog} alt="Right Dog" className="w-40 lg:w-44 mx-auto" />
+  </div>
+</div>
 
       </div>
     </>
