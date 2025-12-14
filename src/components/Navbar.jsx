@@ -430,7 +430,7 @@ const SECTIONS = [
   ["services", "Our Services"],
   ["unique", "Why Us"],
   ["vendor", "Become a Vendor"],
-  ["contact", "Meet the Team"],
+  ["contact", "Meet Our Team"],
 ];
 
 const Navbar = () => {

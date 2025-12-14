@@ -238,18 +238,18 @@ const Home = () => {
           </div>
         </div> */}
 {/* <div className="flex justify-center items-center gap-20 mx-auto max-w-6xl -mt-8"> */}
-  <div className="flex justify-center items-center gap-24 lg:gap-28 mx-auto max-w-6xl -mt-8">
+  <div className="flex justify-center items-center gap-26 lg:gap-28 mx-auto max-w-6xl -mt-8">
 
   <div className="text-center animate-playful-jump">
-    <img src={leftdog} alt="Left Dog" className="w-40 lg:w-44 mx-auto" />
+    <img src={leftdog} alt="Left Dog" className="w-44 lg:w-64 mx-auto" />
   </div>
 
   <div className="text-center animate-head-tilt">
-    <img src={middledog} alt="Middle Dog" className="w-44 lg:w-48 mx-auto" />
+    <img src={middledog} alt="Middle Dog" className="w-44 lg:w-64 mx-auto" />
   </div>
 
   <div className="text-center animate-tail-wag">
-    <img src={rightdog} alt="Right Dog" className="w-40 lg:w-44 mx-auto" />
+    <img src={rightdog} alt="Right Dog" className="w-44 lg:w-64 mx-auto" />
   </div>
 </div>
 
